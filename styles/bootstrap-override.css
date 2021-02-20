@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .modal-dialog {
+        max-width: 1000px;
+        width: 1000px;
+        margin: 30px auto;
+    }
+    .modal-content {
+        width: 1000px;
+        margin: 30px auto;
+    }
+}

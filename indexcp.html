@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SnapSense</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBZmOar8dpf2vxG8ZLJo8djqpVXtCM1EQw",
+            authDomain: "sensurg-dc904.firebaseapp.com",
+            databaseURL: "https://sensurg-dc904-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "sensurg-dc904",
+            storageBucket: "sensurg-dc904.appspot.com",
+            messagingSenderId: "18887994126",
+            appId: "1:18887994126:web:fbf70f70c8613e3a6f455f",
+            measurementId: "G-YFWPFGVW1Z"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.database();
+        const storage = firebase.storage();
+
+        //db.settings({timestampsInSnapshots: true});
+    </script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/navbar.css">
+</head>
+
+<body id="collection-601885492b45445129a97cfb" data-controller="SiteLoader, Flags" class="header-overlay-alignment-center header-width-full tweak-transparent-header tweak-fixed-header-style-basic tweak-blog-alternating-side-by-side-width-full tweak-blog-alternating-side-by-side-image-aspect-ratio-11-square tweak-blog-alternating-side-by-side-text-alignment-left tweak-blog-alternating-side-by-side-read-more-style-show tweak-blog-alternating-side-by-side-image-text-alignment-middle tweak-blog-alternating-side-by-side-delimiter-bullet tweak-blog-alternating-side-by-side-meta-position-top tweak-blog-alternating-side-by-side-primary-meta-categories tweak-blog-alternating-side-by-side-secondary-meta-date tweak-blog-alternating-side-by-side-excerpt-show tweak-blog-basic-grid-width-full tweak-blog-basic-grid-image-aspect-ratio-32-standard tweak-blog-basic-grid-text-alignment-left tweak-blog-basic-grid-delimiter-bullet tweak-blog-basic-grid-image-placement-above tweak-blog-basic-grid-read-more-style-show tweak-blog-basic-grid-primary-meta-categories tweak-blog-basic-grid-secondary-meta-date tweak-blog-basic-grid-excerpt-show tweak-blog-item-width-medium tweak-blog-item-text-alignment-left tweak-blog-item-meta-position-above-title tweak-blog-item-show-categories tweak-blog-item-show-date tweak-blog-item-show-author-name tweak-blog-item-show-author-profile tweak-blog-item-delimiter-bullet tweak-blog-masonry-width-full tweak-blog-masonry-text-alignment-left tweak-blog-masonry-primary-meta-categories tweak-blog-masonry-secondary-meta-date tweak-blog-masonry-meta-position-top tweak-blog-masonry-read-more-style-show tweak-blog-masonry-delimiter-space tweak-blog-masonry-image-placement-above tweak-blog-masonry-excerpt-show tweak-blog-side-by-side-width-full tweak-blog-side-by-side-image-placement-left tweak-blog-side-by-side-image-aspect-ratio-11-square tweak-blog-side-by-side-primary-meta-categories tweak-blog-side-by-side-secondary-meta-date tweak-blog-side-by-side-meta-position-top tweak-blog-side-by-side-text-alignment-left tweak-blog-side-by-side-image-text-alignment-middle tweak-blog-side-by-side-read-more-style-show tweak-blog-side-by-side-delimiter-bullet tweak-blog-side-by-side-excerpt-show tweak-blog-single-column-width-full tweak-blog-single-column-text-alignment-center tweak-blog-single-column-image-placement-above tweak-blog-single-column-delimiter-bullet tweak-blog-single-column-read-more-style-show tweak-blog-single-column-primary-meta-categories tweak-blog-single-column-secondary-meta-date tweak-blog-single-column-meta-position-top tweak-blog-single-column-content-full-post tweak-events-stacked-width-full tweak-events-stacked-height-large tweak-events-stacked-show-thumbnails tweak-events-stacked-thumbnail-size-32-standard tweak-events-stacked-date-style-with-text tweak-events-stacked-show-time tweak-events-stacked-show-location tweak-events-stacked-show-excerpt tweak-global-animations-complexity-level-detailed tweak-global-animations-animation-style-fade tweak-global-animations-animation-type-none tweak-global-animations-animation-curve-ease tweak-portfolio-grid-basic-width-full tweak-portfolio-grid-basic-height-large tweak-portfolio-grid-basic-image-aspect-ratio-11-square tweak-portfolio-grid-basic-text-alignment-left tweak-portfolio-grid-basic-hover-effect-fade tweak-portfolio-grid-overlay-width-full tweak-portfolio-grid-overlay-height-large tweak-portfolio-grid-overlay-image-aspect-ratio-11-square tweak-portfolio-grid-overlay-text-placement-center tweak-portfolio-grid-overlay-show-text-after-hover tweak-portfolio-index-background-link-format-stacked tweak-portfolio-index-background-width-full tweak-portfolio-index-background-height-large tweak-portfolio-index-background-vertical-alignment-middle tweak-portfolio-index-background-horizontal-alignment-center tweak-portfolio-index-background-delimiter-none tweak-portfolio-index-background-animation-type-fade tweak-portfolio-index-background-animation-duration-medium tweak-portfolio-hover-follow-layout-inline tweak-portfolio-hover-follow-delimiter-bullet tweak-portfolio-hover-follow-animation-type-fade tweak-portfolio-hover-follow-animation-duration-fast tweak-portfolio-hover-static-layout-inline tweak-portfolio-hover-static-front tweak-portfolio-hover-static-delimiter-hyphen tweak-portfolio-hover-static-animation-type-fade tweak-portfolio-hover-static-animation-duration-fast tweak-portfolio-slides-cover-detail-placement-horizontal-left tweak-portfolio-slides-cover-detail-placement-vertical-middle tweak-portfolio-slides-cover-text-align-left tweak-portfolio-slides-cover-content-width-m tweak-portfolio-slides-cover-indicator-type-bar tweak-portfolio-slides-cover-view-link tweak-portfolio-slides-cover-animation-style-vertical-slide tweak-portfolio-slides-inset-detail-placement-middle-left tweak-portfolio-slides-inset-image-margin-m tweak-portfolio-slides-inset-content-width-m tweak-portfolio-slides-inset-indicator-type-bar tweak-portfolio-slides-inset-view-link tweak-portfolio-slides-inset-animation-style-vertical-slide tweak-portfolio-slides-split-position-split-left tweak-portfolio-slides-split-text-align-left tweak-portfolio-slides-split-detail-placement-horizontal-left tweak-portfolio-slides-split-detail-placement-vertical-middle tweak-portfolio-slides-split-image-align-right tweak-portfolio-slides-split-image-width-m tweak-portfolio-slides-split-content-width-m tweak-portfolio-slides-split-indicator-type-bar tweak-portfolio-slides-split-view-link tweak-portfolio-slides-split-animation-style-vertical-slide tweak-product-basic-item-width-full tweak-product-basic-item-gallery-aspect-ratio-34-three-four-vertical tweak-product-basic-item-text-alignment-left tweak-product-basic-item-navigation-breadcrumbs tweak-product-basic-item-content-alignment-top tweak-product-basic-item-gallery-design-slideshow tweak-product-basic-item-gallery-placement-left tweak-product-basic-item-thumbnail-placement-side tweak-product-basic-item-click-action-none tweak-product-basic-item-hover-action-none tweak-product-basic-item-variant-picker-layout-dropdowns tweak-products-width-full tweak-products-image-aspect-ratio-11-square tweak-products-text-alignment-left tweak-products-price-show tweak-products-nested-category-type-top tweak-products-category-title tweak-products-header-text-alignment-middle tweak-products-breadcrumbs primary-button-style-outline primary-button-shape-square image-block-poster-text-alignment-left image-block-card-content-position-center image-block-card-text-alignment-center image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-content-position-center image-block-collage-text-alignment-left image-block-stack-text-alignment-left hide-opentable-icons opentable-style-dark tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light native-currency-code-usd collection-type-page collection-layout-default collection-601885492b45445129a97cfb homepage mobile-style-available sqs-seven-one seven-one-global-animations sqs-jacquard sqs-jacquard-outline-beta sqs-device-view-desktop sqs-hide-overlay-widgets" tabindex="-1" data-mobile-header-editing="true" data-menu-overlay-theme-switcher="true" data-controllers-bound="Flags" data-new-gr-c-s-check-loaded="14.993.0" data-gr-ext-installed="" data-animation-state="booted">
+    <div id="siteWrapper" class="clearfix site-wrapper">
+      
+        <div class="floating-cart hidden" data-controller="FloatingCart" data-controllers-bound="FloatingCart">
+          <a href="/cart" class="icon icon--stroke icon--cart sqs-custom-cart">
+            <span class="Cart-inner">
+              <svg class="icon icon--cart" viewBox="0 0 31 26">
+  <g class="svg-icon cart-icon--odd">
+    <circle stroke-miterlimit="10" cx="22.5" cy="21.5" r="1"></circle>
+    <circle stroke-miterlimit="10" cx="9.5" cy="21.5" r="1"></circle>
+    <path fill="none" stroke-miterlimit="10" d="M0,1.5h5c0.6,0,1.1,0.4,1.1,1l1.7,13
+      c0.1,0.5,0.6,1,1.1,1h15c0.5,0,1.2-0.4,1.4-0.9l3.3-8.1c0.2-0.5-0.1-0.9-0.6-0.9H12"></path>
+  </g>
+</svg>
+              <div class="icon-cart-quantity">
+                <span class="sqs-cart-quantity">0</span>
+              </div>
+            </span>
+          </a>
+        </div>
+      
+
+      <header data-test="header" id="header" class="header theme-col--primary dark sqs-frontend-overlay-editor-widget-host sqs-disable-drag-selection" data-controller="Header" data-current-styles="{
+&quot;layout&quot;: &quot;navRight&quot;,
+&quot;action&quot;: {
+&quot;buttonText&quot;: &quot;Get Started&quot;,
+&quot;newWindow&quot;: false
+},
+&quot;showSocial&quot;: false,
+&quot;sectionTheme&quot;: &quot;&quot;,
+&quot;menuOverlayAnimation&quot;: &quot;fade&quot;,
+&quot;cartStyle&quot;: &quot;cart&quot;,
+&quot;cartText&quot;: &quot;Cart&quot;,
+&quot;showButton&quot;: true,
+&quot;showCart&quot;: false,
+&quot;showAccountLogin&quot;: true,
+&quot;mobileOptions&quot;: {
+&quot;layout&quot;: &quot;logoLeftNavRight&quot;,
+&quot;menuIcon&quot;: &quot;doubleLineHamburger&quot;
+},
+&quot;showPromotedElement&quot;: false
+}" data-section-id="header" data-header-theme="" data-menu-overlay-theme="" data-first-focusable-element="" tabindex="-1" data-controllers-bound="Header" data-edit-button-text="Edit Site Header">
+  <div class="sqs-announcement-bar-dropzone"></div>
+  <div class="header-announcement-bar-wrapper" id="yui_3_17_2_1_1612275967456_468"> 
+
+    <a href="#page" tabindex="1" class="header-skip-link">
+      Skip to Content
+    </a>
+
+    <div class="header-inner container--fluid
+      
+      
+        
+        
+         header-mobile-layout-logo-left-nav-right
+        
+        
+        
+        
+        
+      
+      
+       header-layout-nav-right
+      
+      
+      
+      
+      
+      
+      
+      
+      ">
+      <!-- Background -->
+      <div class="header-background theme-bg--primary"></div>
+
+      <div class="header-display-desktop" data-content-field="site-title">
+        
+
+        
+
+        
+
+        
+
+        
+        
+          
+          <!-- Social -->
+          
+        
+          
+          <!-- Title and nav wrapper -->
+          <div class="header-title-nav-wrapper">
+            
+
+            
+
+            
+              
+              <!-- Title -->
+              
+                <div class="
+                    header-title
+                    
+                  " data-animation-role="header-element">
+                  
+                    <div class="header-title-text">
+                      <a id="site-title" href="/" data-animation-role="header-element">SNAPSENSE</a>
+                    </div>
+                  
+                  
+                </div>
+              
+            
+              
+              <!-- Nav -->
+              <div class="header-nav">
+                <div class="header-nav-wrapper">
+                  <nav class="header-nav-list">
+                    
+
+
+  
+    <div class="header-nav-item header-nav-item--collection">
+      <a href="/who-we-are" data-animation-role="header-element">
+        
+        WHO WE ARE
+      </a>
+    </div>
+  
+  
+  
+
+
+  
+    <div class="header-nav-item header-nav-item--collection">
+      <a href="/what-we-do" data-animation-role="header-element">
+        
+        WHAT WE DO
+      </a>
+    </div>
+  
+  
+  
+
+
+  
+    <div class="header-nav-item header-nav-item--collection">
+      <a href="/nhs" data-animation-role="header-element">
+        
+        NHS
+      </a>
+    </div>
+  
+  
+  
+
+
+
+                  </nav>
+                </div>
+              </div>
+            
+            
+          </div>
+        
+          
+          <!-- Actions -->
+          <div class="header-actions header-actions--right">
+            
+            
+
+          
+          
+
+          
+          
+          
+
+            
+            
+            
+              <div class="showOnMobile">
+                
+              </div>
+            
+
+            
+            <div class="showOnDesktop">
+              
+            </div>
+
+            
+              <div class="header-actions-action header-actions-action--cta" data-animation-role="header-element">
+                <a class="btn btn--border theme-btn--primary-inverse" href="">
+                  Get Started
+                </a>
+              </div>
+            
+
+          
+          </div>
+        
+          
+          <!-- Burger -->
+          <div class="header-burger
+          
+            
+          " data-animation-role="header-element">
+            <button class="header-burger-btn burger" data-test="header-burger">
+              <span class="js-header-burger-open-title visually-hidden">Open Menu</span>
+              <span hidden="" class="js-header-burger-close-title visually-hidden">Close Menu</span>
+              <div class="burger-box">
+                <div class="burger-inner
+                   header-menu-icon-doubleLineHamburger
+                  
+                  
+                  
+                ">
+                  <div class="top-bun"></div>
+                  <div class="patty"></div>
+                  <div class="bottom-bun"></div>
+                </div>
+              </div>
+            </button>
+          </div>
+        
+        
+        
+        
+        
+        
+
+      </div>
+      
+        <div class="header-display-mobile" data-content-field="site-title">
+          
+            
+          <!-- Social -->
+          
+        
+            
+          <!-- Title and nav wrapper -->
+          <div class="header-title-nav-wrapper">
+            
+
+            
+
+            
+              
+              <!-- Title -->
+              
+                <div class="
+                    header-title
+                    
+                  " data-animation-role="header-element">
+                  
+                    <div class="header-title-text">
+                      <a id="site-title" href="/" data-animation-role="header-element">SNAPSENSE</a>
+                    </div>
+                  
+                  
+                </div>
+              
+            
+              
+              <!-- Nav -->
+              <div class="header-nav">
+                <div class="header-nav-wrapper">
+                  <nav class="header-nav-list">
+                    
+
+
+  
+    <div class="header-nav-item header-nav-item--collection">
+      <a href="/who-we-are" data-animation-role="header-element">
+        
+        WHO WE ARE
+      </a>
+    </div>
+  
+  
+  
+
+
+  
+    <div class="header-nav-item header-nav-item--collection">
+      <a href="/what-we-do" data-animation-role="header-element">
+        
+        WHAT WE DO
+      </a>
+    </div>
+  
+  
+  
+
+
+  
+    <div class="header-nav-item header-nav-item--collection">
+      <a href="/nhs" data-animation-role="header-element">
+        
+        NHS
+      </a>
+    </div>
+  
+  
+  
+
+
+
+                  </nav>
+                </div>
+              </div>
+            
+            
+          </div>
+        
+            
+          <!-- Actions -->
+          <div class="header-actions header-actions--right">
+            
+            
+
+          
+          
+
+          
+          
+          
+
+            
+            
+            
+              <div class="showOnMobile">
+                
+              </div>
+            
+
+            
+            <div class="showOnDesktop">
+              
+            </div>
+
+            
+              <div class="header-actions-action header-actions-action--cta" data-animation-role="header-element">
+                <a class="btn btn--border theme-btn--primary-inverse" href="">
+                  Get Started
+                </a>
+              </div>
+            
+
+          
+          </div>
+        
+            
+          <!-- Burger -->
+          <div class="header-burger
+          
+            
+          " data-animation-role="header-element">
+            <button class="header-burger-btn burger" data-test="header-burger">
+              <span class="js-header-burger-open-title visually-hidden">Open Menu</span>
+              <span hidden="" class="js-header-burger-close-title visually-hidden">Close Menu</span>
+              <div class="burger-box">
+                <div class="burger-inner
+                   header-menu-icon-doubleLineHamburger
+                  
+                  
+                  
+                ">
+                  <div class="top-bun"></div>
+                  <div class="patty"></div>
+                  <div class="bottom-bun"></div>
+                </div>
+              </div>
+            </button>
+          </div>
+        
+          
+          
+          
+          
+          
+        </div>
+      
+    </div>
+  </div>
+  <!-- (Mobile) Menu Navigation -->
+  <div class="header-menu header-menu--folder-list
+    
+      
+    
+    
+    
+    
+    
+    " data-current-styles="{
+&quot;layout&quot;: &quot;navRight&quot;,
+&quot;action&quot;: {
+&quot;buttonText&quot;: &quot;Get Started&quot;,
+&quot;newWindow&quot;: false
+},
+&quot;showSocial&quot;: false,
+&quot;sectionTheme&quot;: &quot;&quot;,
+&quot;menuOverlayAnimation&quot;: &quot;fade&quot;,
+&quot;cartStyle&quot;: &quot;cart&quot;,
+&quot;cartText&quot;: &quot;Cart&quot;,
+&quot;showButton&quot;: true,
+&quot;showCart&quot;: false,
+&quot;showAccountLogin&quot;: true,
+&quot;mobileOptions&quot;: {
+&quot;layout&quot;: &quot;logoLeftNavRight&quot;,
+&quot;menuIcon&quot;: &quot;doubleLineHamburger&quot;
+},
+&quot;showPromotedElement&quot;: false
+}" data-section-id="overlay-nav" data-show-account-login="true" data-test="header-menu" style="padding-top: 133.469px;">
+    <div class="header-menu-bg theme-bg--primary"></div>
+    <div class="header-menu-nav">
+      <nav class="header-menu-nav-list">
+        
+      <div data-folder="root" class="header-menu-nav-folder header-menu-nav-folder--active">
+          <!-- Menu Navigation -->
+<div class="header-menu-nav-folder-content">
+
+  <div class="container header-menu-nav-item header-menu-nav-item--collection">
+    <a href="/who-we-are">
+      
+      WHO WE ARE
+    </a>
+  </div>
+
+  <div class="container header-menu-nav-item header-menu-nav-item--collection">
+    <a href="/what-we-do">
+      
+      WHAT WE DO
+    </a>
+  </div>
+
+  <div class="container header-menu-nav-item header-menu-nav-item--collection">
+    <a href="/nhs">
+      
+      NHS
+    </a>
+  </div>
+
+
+</div>
+
+          <div class="header-menu-actions"></div>
+          
+          <div class="header-menu-cta">
+            <a class="theme-btn--primary btn" href="">
+            Get Started
+            </a>
+          </div>
+          
+        </div></nav>
+    </div>
+  </div>
+</header>
+
+
+      <main id="page" class="container" role="main">
+        
+          <article class="sections sqs-frontend-overlay-editor-widget-host" data-page-sections="601885492b45445129a97cfa" id="sections" data-edit-button-text="Edit Page">
+  
+    <section data-test="page-section" data-section-theme="dark" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--large
+    
+    
+      content-width--medium
+    
+    horizontal-alignment--left
+    vertical-alignment--middle
+     has-background
+    dark" data-section-id="601885492b45445129a97cfd" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;backgroundImage&quot;: {
+&quot;id&quot;: &quot;601886d5bd9f893df369fdb1&quot;,
+&quot;recordType&quot;: 2,
+&quot;addedOn&quot;: 1612220117003,
+&quot;updatedOn&quot;: 1612220133322,
+&quot;workflowState&quot;: 1,
+&quot;publishOn&quot;: 1612220117003,
+&quot;authorId&quot;: &quot;6008902fe6f5ad754fa6897b&quot;,
+&quot;systemDataId&quot;: &quot;1612220120335-S0KJTDA5VYHKPG36BZUF&quot;,
+&quot;systemDataVariants&quot;: &quot;2500x1406,100w,300w,500w,750w,1000w,1500w,2500w&quot;,
+&quot;systemDataSourceType&quot;: &quot;PNG&quot;,
+&quot;filename&quot;: &quot;Business Pitch (25).png&quot;,
+&quot;mediaFocalPoint&quot;: {
+  &quot;x&quot;: 0.5,
+  &quot;y&quot;: 0.5,
+  &quot;source&quot;: 3
+},
+&quot;colorData&quot;: {
+  &quot;topLeftAverage&quot;: &quot;01659e&quot;,
+  &quot;topRightAverage&quot;: &quot;015f9b&quot;,
+  &quot;bottomLeftAverage&quot;: &quot;01588c&quot;,
+  &quot;bottomRightAverage&quot;: &quot;00bbd6&quot;,
+  &quot;centerAverage&quot;: &quot;ebf3f8&quot;,
+  &quot;suggestedBgColor&quot;: &quot;016ea8&quot;
+},
+&quot;urlId&quot;: &quot;zf51op50craja6utt2up2ync0o9wr7&quot;,
+&quot;title&quot;: &quot;&quot;,
+&quot;body&quot;: null,
+&quot;likeCount&quot;: 0,
+&quot;commentCount&quot;: 0,
+&quot;publicCommentCount&quot;: 0,
+&quot;commentState&quot;: 2,
+&quot;unsaved&quot;: false,
+&quot;author&quot;: {
+  &quot;id&quot;: &quot;6008902fe6f5ad754fa6897b&quot;,
+  &quot;displayName&quot;: &quot;Shreya Chawla&quot;,
+  &quot;firstName&quot;: &quot;Shreya&quot;,
+  &quot;lastName&quot;: &quot;Chawla&quot;,
+  &quot;avatarUrl&quot;: &quot;https://static1.squarespace.com/static/images/6008903001b5052e7a054e6a&quot;,
+  &quot;bio&quot;: &quot;&quot;,
+  &quot;avatarAssetUrl&quot;: &quot;https://static1.squarespace.com/static/images/6008903001b5052e7a054e6a&quot;
+},
+&quot;assetUrl&quot;: &quot;https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601886d5bd9f893df369fdb1/1612220133322/Business+Pitch+%2825%29.png&quot;,
+&quot;contentType&quot;: &quot;image/png&quot;,
+&quot;items&quot;: [ ],
+&quot;pushedServices&quot;: { },
+&quot;pendingPushedServices&quot;: { },
+&quot;recordTypeLabel&quot;: &quot;image&quot;,
+&quot;originalSize&quot;: &quot;2500x1406&quot;
+},
+&quot;imageOverlayOpacity&quot;: 0.05,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--large&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--left&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--medium&quot;,
+&quot;sectionTheme&quot;: &quot;dark&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;,
+&quot;imageEffect&quot;: &quot;none&quot;
+}" data-animation="none" style="padding-top: 133.469px;" data-controllers-bound="SectionWrapperController, MagicPaddingController" data-active="true" id="yui_3_17_2_1_1612275967456_492">
+  <div class="section-background">
+  
+     
+      
+      
+        
+  <img alt="" data-src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601886d5bd9f893df369fdb1/1612220133322/Business+Pitch+%2825%29.png" data-image="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601886d5bd9f893df369fdb1/1612220133322/Business+Pitch+%2825%29.png" data-image-dimensions="2500x1406" data-image-focal-point="0.5,0.5" data-load="false" data-parent-ratio="1.1" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover;" class="" data-image-resolution="2500w" src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601886d5bd9f893df369fdb1/1612220133322/Business+Pitch+%2825%29.png?format=2500w">
+
+      
+      <div data-controller="SectionBackgroundOverlayController" data-image-overlay-opacity="0.05" class="section-background-overlay" data-controllers-bound="SectionBackgroundOverlayController" style="opacity: 0.05;"></div>
+    
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    ">
+    <div class="content">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12 empty" data-type="page-section" data-updated-on="1612275967585" id="page-section-601885492b45445129a97cfd"></div>
+    </div>
+  </div>
+</section>
+
+  
+    <section data-test="page-section" data-section-theme="" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--medium
+    
+    
+      content-width--wide
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+    
+    " data-section-id="601885492b45445129a97d01" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--medium&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+&quot;customContentWidth&quot;: 100,
+&quot;sectionTheme&quot;: &quot;&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController" id="yui_3_17_2_1_1612275967456_285" data-active="true">
+  <div class="section-background">
+  
+     
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    " id="yui_3_17_2_1_1612275967456_284">
+    <div class="content" id="yui_3_17_2_1_1612275967456_283">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-601885492b45445129a97d01"><div class="row sqs-row" id="yui_3_17_2_1_1612275967456_282"><div class="col sqs-col-12 span-12" id="yui_3_17_2_1_1612275967456_281"><div class="sqs-block image-block sqs-block-image sqs-text-ready" data-block-type="5" id="block-df1f7cf0078273da1a09"><div class="sqs-block-content" id="yui_3_17_2_1_1612275967456_280">
+
+
+
+
+
+
+
+
+  
+
+    
+
+      <figure class="sqs-block-image-figure image-block-outer-wrapper image-block-v2 design-layout-card combination-animation-reveal individual-animation-none individual-text-animation-none image-position-right sqs-text-ready" data-scrolled="" data-test="image-block-v2-outer-wrapper" id="yui_3_17_2_1_1612275967456_279">
+
+        <div class="intrinsic" id="yui_3_17_2_1_1612275967456_278">
+          
+            <div class="
+                
+                image-inset
+                
+                  content-fit
+                
+              " data-animation-role="image" data-description="" data-animation-override="" id="yui_3_17_2_1_1612275967456_277">
+            <noscript><img src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cee/1558722455165/" alt="Tapas originated in the Catalonian region of Spain and are small plates typically consumed with wine or vermouth. - We combine traditional preparations with local ingredients for dishes that are authentic to both their Spanish origins and New York setting.Learn more about our story." /></noscript>
+            <img data-src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cee/1558722455165/" data-image="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cee/1558722455165/" data-image-dimensions="2500x3072" data-image-focal-point="0.5,0.5" alt="" class="loaded" data-image-resolution="500w" src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cee/1558722455165/?format=500w" data-parent-ratio="0.8" style="left: 0.332031px; top: 0px; width: 444.336px; height: 546px; position: absolute;">
+            <div class="image-overlay"></div>
+          
+            </div>
+          
+
+        </div>
+
+        
+          
+          <figcaption class="image-card-wrapper" data-width-ratio="">
+            <div class="image-card sqs-dynamic-text-container">
+
+              
+                <div class="image-title-wrapper"><div class="image-title sqs-dynamic-text" data-animation-override="" data-width-percentage="42.5" style="font-size: 42.5%;"><h3 style="white-space:pre-wrap;">Tapas originated in the Catalonian region of Spain and are small plates typically consumed with wine or vermouth.</h3></div></div>
+              
+
+              
+                <div class="image-subtitle-wrapper"><div class="image-subtitle sqs-dynamic-text" data-animation-override="" data-width-percentage="42.5" style="font-size: 42.5%;"><p class="" style="white-space:pre-wrap;">We combine traditional preparations with local ingredients for dishes that are authentic to both their Spanish origins and New York setting.</p><p class="" style="white-space:pre-wrap;"><a href="/our-story">Learn more about our story.</a></p></div></div>
+              
+
+              
+
+            </div>
+          </figcaption>
+        
+
+      </figure>
+
+    
+
+  
+
+
+</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+    <section data-test="page-section" data-section-theme="bright" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--medium
+    
+    
+      content-width--medium
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+    
+    bright" data-section-id="601885492b45445129a97cff" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--medium&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--medium&quot;,
+&quot;customContentWidth&quot;: 95,
+&quot;sectionTheme&quot;: &quot;bright&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController">
+  <div class="section-background">
+  
+     
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    ">
+    <div class="content">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-601885492b45445129a97cff"><div class="row sqs-row"><div class="col sqs-col-12 span-12"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-54acd37d0d3e91599a27"><div class="sqs-block-content"><h3 style="text-align:center;white-space:pre-wrap;">Located in Gowanus, Brooklyn, Vance serves Authentic tapas from Catalonia in a modern industrial space.</h3><h3 style="text-align:center;white-space:pre-wrap;">We also serve beer, wine and spirits.</h3></div></div><div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-45df57b2c0a296889c61"><div class="sqs-block-content" id="yui_3_17_2_1_1612275967456_328">
+
+<div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium" id="yui_3_17_2_1_1612275967456_327">
+	<a href="/make-a-reservation" class="sqs-block-button-element--medium sqs-block-button-element" data-initialized="true">Make a Reservation</a>
+</div>
+</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+    <section data-test="page-section" data-section-theme="dark" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--large
+    
+    
+      content-width--medium
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+     has-background
+    dark" data-section-id="601885492b45445129a97d03" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;backgroundImage&quot;: {
+&quot;id&quot;: &quot;601885492b45445129a97cf2&quot;,
+&quot;recordType&quot;: 2,
+&quot;addedOn&quot;: 1558720289583,
+&quot;updatedOn&quot;: 1558721451419,
+&quot;starred&quot;: false,
+&quot;passthrough&quot;: false,
+&quot;workflowState&quot;: 1,
+&quot;publishOn&quot;: 1558720289583,
+&quot;authorId&quot;: &quot;6008902fe6f5ad754fa6897b&quot;,
+&quot;systemDataId&quot;: &quot;1558720291151-JZHAFNEJJ1ZZ7W5406DR&quot;,
+&quot;systemDataVariants&quot;: &quot;1920x1280,100w,300w,500w,750w,1000w,1500w&quot;,
+&quot;systemDataSourceType&quot;: &quot;JPG&quot;,
+&quot;filename&quot;: &quot;camp_285-copy.jpg&quot;,
+&quot;mediaFocalPoint&quot;: {
+  &quot;x&quot;: 0.5,
+  &quot;y&quot;: 0.5,
+  &quot;source&quot;: 3
+},
+&quot;colorData&quot;: {
+  &quot;topLeftAverage&quot;: &quot;c69a6b&quot;,
+  &quot;topRightAverage&quot;: &quot;281924&quot;,
+  &quot;bottomLeftAverage&quot;: &quot;473e43&quot;,
+  &quot;bottomRightAverage&quot;: &quot;a9afc0&quot;,
+  &quot;centerAverage&quot;: &quot;bc9983&quot;,
+  &quot;suggestedBgColor&quot;: &quot;af7c43&quot;
+},
+&quot;urlId&quot;: &quot;btzuhd5bosrb75te37cc79wpxq9ti5-kfz9x&quot;,
+&quot;title&quot;: &quot;&quot;,
+&quot;body&quot;: null,
+&quot;likeCount&quot;: 0,
+&quot;commentCount&quot;: 0,
+&quot;publicCommentCount&quot;: 0,
+&quot;commentState&quot;: 2,
+&quot;unsaved&quot;: false,
+&quot;author&quot;: {
+  &quot;id&quot;: &quot;6008902fe6f5ad754fa6897b&quot;,
+  &quot;displayName&quot;: &quot;Shreya Chawla&quot;,
+  &quot;firstName&quot;: &quot;Shreya&quot;,
+  &quot;lastName&quot;: &quot;Chawla&quot;,
+  &quot;avatarUrl&quot;: &quot;https://static1.squarespace.com/static/images/6008903001b5052e7a054e6a&quot;,
+  &quot;bio&quot;: &quot;&quot;,
+  &quot;avatarAssetUrl&quot;: &quot;https://static1.squarespace.com/static/images/6008903001b5052e7a054e6a&quot;
+},
+&quot;assetUrl&quot;: &quot;https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf2/1558721451419/camp_285-copy.jpg&quot;,
+&quot;contentType&quot;: &quot;image/jpeg&quot;,
+&quot;items&quot;: [ ],
+&quot;pushedServices&quot;: { },
+&quot;pendingPushedServices&quot;: { },
+&quot;recordTypeLabel&quot;: &quot;image&quot;,
+&quot;originalSize&quot;: &quot;1920x1280&quot;
+},
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--large&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--medium&quot;,
+&quot;sectionTheme&quot;: &quot;dark&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController">
+  <div class="section-background">
+  
+     
+      
+      
+        <img alt="" data-src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf2/1558721451419/camp_285-copy.jpg" data-image="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf2/1558721451419/camp_285-copy.jpg" data-image-dimensions="1920x1280" data-image-focal-point="0.5,0.5" data-load="false">
+      
+      <div data-controller="SectionBackgroundOverlayController" data-image-overlay-opacity="0.15" class="section-background-overlay" data-controllers-bound="SectionBackgroundOverlayController" style="opacity: 0.15;"></div>
+    
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    ">
+    <div class="content">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-601885492b45445129a97d03"><div class="row sqs-row"><div class="col sqs-col-12 span-12"><div class="sqs-block spacer-block sqs-block-spacer" data-aspect-ratio="3.3203125" data-block-type="21" id="block-ae9d3271866d9e67881f"><div class="sqs-block-content sqs-intrinsic" id="yui_3_17_2_1_1612275967456_340" style="padding-bottom: 3.32031%;">&nbsp;</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+    <section data-test="page-section" data-section-theme="" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--medium
+    
+    
+      content-width--wide
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+    
+    " data-section-id="601885492b45445129a97d05" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--medium&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+&quot;customContentWidth&quot;: 100,
+&quot;sectionTheme&quot;: &quot;&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController" id="yui_3_17_2_1_1612275967456_308">
+  <div class="section-background">
+  
+     
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    " id="yui_3_17_2_1_1612275967456_307">
+    <div class="content" id="yui_3_17_2_1_1612275967456_306">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-601885492b45445129a97d05"><div class="row sqs-row" id="yui_3_17_2_1_1612275967456_305"><div class="col sqs-col-12 span-12" id="yui_3_17_2_1_1612275967456_304"><div class="sqs-block image-block sqs-block-image sqs-text-ready" data-block-type="5" id="block-874b8857445c99be2ed8"><div class="sqs-block-content" id="yui_3_17_2_1_1612275967456_303">
+
+
+
+
+
+
+
+
+  
+
+    
+
+      <figure class="sqs-block-image-figure image-block-outer-wrapper image-block-v2 design-layout-card combination-animation-reveal individual-animation-none individual-text-animation-none image-position-left sqs-text-ready" data-scrolled="" data-test="image-block-v2-outer-wrapper" id="yui_3_17_2_1_1612275967456_302">
+
+        <div class="intrinsic" id="yui_3_17_2_1_1612275967456_301">
+          
+            <div class="
+                
+                image-inset
+                
+                  content-fit
+                
+              " data-animation-role="image" data-description="" data-animation-override="" id="yui_3_17_2_1_1612275967456_300">
+            <noscript><img src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf5/1562677949164/" alt="Vermouth is the typical accompaniment to tapas and we invite you to sample our extensive and surprising list. - In addition, we offer craft beer, Spanish and American wines, a full bar and a variety of delightful non-alcoholic options." /></noscript>
+            <img data-src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf5/1562677949164/" data-image="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf5/1562677949164/" data-image-dimensions="2500x3072" data-image-focal-point="0.5,0.5" alt="" class="loaded" data-image-resolution="500w" src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf5/1562677949164/?format=500w" data-parent-ratio="0.8" style="left: 0.332031px; top: 0px; width: 444.336px; height: 546px; position: absolute;">
+            <div class="image-overlay"></div>
+          
+            </div>
+          
+
+        </div>
+
+        
+          
+          <figcaption class="image-card-wrapper" data-width-ratio="">
+            <div class="image-card sqs-dynamic-text-container">
+
+              
+                <div class="image-title-wrapper"><div class="image-title sqs-dynamic-text" data-animation-override="" data-width-percentage="42.5" style="font-size: 42.5%;"><h3 style="white-space:pre-wrap;">Vermouth is the typical accompaniment to tapas and we invite you to sample our extensive and surprising list.</h3></div></div>
+              
+
+              
+                <div class="image-subtitle-wrapper"><div class="image-subtitle sqs-dynamic-text" data-animation-override="" data-width-percentage="42.5" style="font-size: 42.5%;"><p class="" style="white-space:pre-wrap;">In addition, we offer craft beer, Spanish and American wines, a full bar and a variety of delightful non-alcoholic options.</p></div></div>
+              
+
+              
+
+            </div>
+          </figcaption>
+        
+
+      </figure>
+
+    
+
+  
+
+
+</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+    <section data-test="page-section" data-section-theme="bright" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--medium
+    
+    
+      content-width--medium
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+    
+    bright" data-section-id="601885492b45445129a97d07" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--medium&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--medium&quot;,
+&quot;sectionTheme&quot;: &quot;bright&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController">
+  <div class="section-background">
+  
+     
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    ">
+    <div class="content">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-601885492b45445129a97d07"><div class="row sqs-row"><div class="col sqs-col-12 span-12"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-de12979239f22e6ddb6a"><div class="sqs-block-content"><h2 style="text-align:center;white-space:pre-wrap;">123 Demo Street<br>Brooklyn, New York 12345</h2></div></div><div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-7be3aafe16c31324f435"><div class="sqs-block-content" id="yui_3_17_2_1_1612275967456_335">
+
+<div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium" id="yui_3_17_2_1_1612275967456_334">
+	<a href="https://www.google.com/maps" class="sqs-block-button-element--medium sqs-block-button-element" target="_blank" data-initialized="true">Get Directions</a>
+</div>
+</div></div><div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21" id="block-e946da58c71e9f1fec30"><div class="sqs-block-content">&nbsp;</div></div><div class="row sqs-row"><div class="col sqs-col-6 span-6"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-c54e274e97b307cee2ac"><div class="sqs-block-content"><h3 style="text-align:center;white-space:pre-wrap;">Monday–Thursday<br>12pm–10pm</h3></div></div></div><div class="col sqs-col-6 span-6"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-39484695bf2e11d45224"><div class="sqs-block-content"><h3 style="text-align:center;white-space:pre-wrap;">Friday–Sunday<br>12pm–11pm</h3></div></div></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+    <section data-test="page-section" data-section-theme="black" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--medium
+    
+    
+      content-width--medium
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+     has-background
+    black" data-section-id="601885492b45445129a97d09" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;backgroundImage&quot;: {
+&quot;id&quot;: &quot;601885492b45445129a97cf9&quot;,
+&quot;recordType&quot;: 2,
+&quot;addedOn&quot;: 1558721360766,
+&quot;updatedOn&quot;: 1558721451426,
+&quot;starred&quot;: false,
+&quot;passthrough&quot;: false,
+&quot;workflowState&quot;: 1,
+&quot;publishOn&quot;: 1558721360766,
+&quot;authorId&quot;: &quot;6008902fe6f5ad754fa6897b&quot;,
+&quot;systemDataId&quot;: &quot;1558721361045-3JH6IONFGLA7B8QTYRZJ&quot;,
+&quot;systemDataVariants&quot;: &quot;2400x1574,100w,300w,500w,750w,1000w,1500w&quot;,
+&quot;systemDataSourceType&quot;: &quot;JPG&quot;,
+&quot;filename&quot;: &quot;camp_397-copy.jpg&quot;,
+&quot;mediaFocalPoint&quot;: {
+  &quot;x&quot;: 0.5,
+  &quot;y&quot;: 0.5,
+  &quot;source&quot;: 3
+},
+&quot;colorData&quot;: {
+  &quot;topLeftAverage&quot;: &quot;cdc2b8&quot;,
+  &quot;topRightAverage&quot;: &quot;7b6960&quot;,
+  &quot;bottomLeftAverage&quot;: &quot;80726c&quot;,
+  &quot;bottomRightAverage&quot;: &quot;b38d5b&quot;,
+  &quot;centerAverage&quot;: &quot;96897f&quot;,
+  &quot;suggestedBgColor&quot;: &quot;c7bbaf&quot;
+},
+&quot;urlId&quot;: &quot;uybtgse9y4gw873yun22wprhw1ys2o-yk7ga&quot;,
+&quot;title&quot;: &quot;&quot;,
+&quot;body&quot;: null,
+&quot;likeCount&quot;: 0,
+&quot;commentCount&quot;: 0,
+&quot;publicCommentCount&quot;: 0,
+&quot;commentState&quot;: 2,
+&quot;unsaved&quot;: false,
+&quot;author&quot;: {
+  &quot;id&quot;: &quot;6008902fe6f5ad754fa6897b&quot;,
+  &quot;displayName&quot;: &quot;Shreya Chawla&quot;,
+  &quot;firstName&quot;: &quot;Shreya&quot;,
+  &quot;lastName&quot;: &quot;Chawla&quot;,
+  &quot;avatarUrl&quot;: &quot;https://static1.squarespace.com/static/images/6008903001b5052e7a054e6a&quot;,
+  &quot;bio&quot;: &quot;&quot;,
+  &quot;avatarAssetUrl&quot;: &quot;https://static1.squarespace.com/static/images/6008903001b5052e7a054e6a&quot;
+},
+&quot;assetUrl&quot;: &quot;https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf9/1558721451426/camp_397-copy.jpg&quot;,
+&quot;contentType&quot;: &quot;image/jpeg&quot;,
+&quot;items&quot;: [ ],
+&quot;pushedServices&quot;: { },
+&quot;pendingPushedServices&quot;: { },
+&quot;recordTypeLabel&quot;: &quot;image&quot;,
+&quot;originalSize&quot;: &quot;2400x1574&quot;
+},
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--medium&quot;,
+&quot;customSectionHeight&quot;: 75,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--medium&quot;,
+&quot;sectionTheme&quot;: &quot;black&quot;,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController">
+  <div class="section-background">
+  
+     
+      
+      
+        <img alt="" data-src="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf9/1558721451426/camp_397-copy.jpg" data-image="https://static1.squarespace.com/static/60188474f1c102112ba31669/t/601885492b45445129a97cf9/1558721451426/camp_397-copy.jpg" data-image-dimensions="2400x1574" data-image-focal-point="0.5,0.5" data-load="false">
+      
+      <div data-controller="SectionBackgroundOverlayController" data-image-overlay-opacity="0.15" class="section-background-overlay" data-controllers-bound="SectionBackgroundOverlayController" style="opacity: 0.15;"></div>
+    
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    ">
+    <div class="content">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-601885492b45445129a97d09"><div class="row sqs-row"><div class="col sqs-col-12 span-12"><div class="sqs-block newsletter-block sqs-block-newsletter rendered" data-block-type="51" id="block-1b2a0faee050dd3c8753"><div class="sqs-block-content">
+
+
+<div class="sqs-blockStatus sqs-blockStatus--overlayMode" data-state="invalid">
+
+  <div class="sqs-blockStatus-disclosure"></div>
+
+  <div class="sqs-blockStatus-box">
+    <div class="sqs-blockStatus-box-title">Newsletter Block</div>
+    
+      <div class="sqs-blockStatus-box-message">
+        This newsletter signup form needs a storage option. Double-click here to edit this form, and tell us where to save new subscribers in the <strong>Storage</strong> tab.
+        
+          <a class="sqs-blockStatus-box-kbArticleLink" href="https://support.squarespace.com/hc/articles/205826068#toc-step-3---select-a-storage-option" target="_blank">Learn more</a>
+        
+      </div>
+    
+  </div>
+
+</div>
+
+
+<div class="newsletter-form-wrapper
+  
+  newsletter-form-wrapper--layoutFloat
+  newsletter-form-wrapper--alignCenter
+  sqs-block-is-placeholder
+  " data-block-state="invalid">
+  <form class="newsletter-form" data-form-id="601885492b45445129a97cf6" autocomplete="on" method="POST" onsubmit="return (function (form) {
+    Y.use('squarespace-form-submit', 'node', function usingFormSubmit(Y) {
+      (new Y.Squarespace.FormSubmit(form)).submit({
+        formId: '601885492b45445129a97cf6',
+        collectionId: '601885492b45445129a97cfb',
+        objectName: 'page-section-601885492b45445129a97d09'
+      });
+    });
+    return false;
+  })(this);">
+    <header class="newsletter-form-header">
+      <h2 class="newsletter-form-header-title">Subscribe to Our Newsletter</h2>
+      <div class="newsletter-form-header-description"><p class="">Sign up to receive news and updates.</p></div>
+    </header>
+    <div class="newsletter-form-body">
+      <div class="newsletter-form-fields-wrapper form-fields" style="vertical-align: bottom;">
+        
+        
+          
+            <div id="email-yui_3_17_2_1_1558721040479_21896" class="newsletter-form-field-wrapper form-item field email required" style="vertical-align: bottom;">
+              <label class="newsletter-form-field-label title" for="email-yui_3_17_2_1_1558721040479_21896-field">Email Address</label>
+              <input id="email-yui_3_17_2_1_1558721040479_21896-field" class="newsletter-form-field-element field-element" name="email" x-autocompletetype="email" type="text" spellcheck="false" placeholder="Email Address">
+            </div>
+          
+        
+          
+        
+      </div>
+      <div data-animation-role="button" class="newsletter-form-button-wrapper submit-wrapper" style="vertical-align: bottom;">
+        <button class="newsletter-form-button sqs-system-button sqs-editable-button-layout sqs-editable-button-style sqs-editable-button-shape" type="submit" value="Sign Up"><span class="newsletter-form-spinner sqs-spin light large"></span><span class="newsletter-form-button-label">Sign Up</span><span class="newsletter-form-button-icon"></span></button>
+      </div>
+      
+        
+      
+    </div>
+    <div class="newsletter-form-footnote"></div>
+    <div class="hidden form-submission-text">Thank you!</div>
+    <div class="hidden form-submission-html" data-submission-html=""></div>
+  </form>
+</div>
+</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+</article>
+
+          
+          
+          
+        
+      </main>
+      <script type="text/javascript">
+        const firstSection = document.querySelector('.page-section');
+        const header = document.querySelector('.header');
+        const mobileOverlayNav = document.querySelector('.header-menu');
+        const sectionBackground = firstSection ? firstSection.querySelector('.section-background') : null;
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const firstSectionHasBackground = firstSection ? firstSection.className.indexOf('has-background') >= 0 : false;
+        const isFirstSectionInset = firstSection ? firstSection.className.indexOf('background-width--inset') >= 0 : false;
+        const isLayoutEngineSection = firstSection ? firstSection.className.indexOf('layout-engine-section') >= 0 : false;
+
+        if (firstSection) {
+          firstSection.style.paddingTop = headerHeight + 'px';
+        }
+        if (sectionBackground && isLayoutEngineSection) {
+          if (isFirstSectionInset) {
+            sectionBackground.style.top = headerHeight + 'px';
+          } else {
+            sectionBackground.style.top = '';
+          }
+        }
+        //# sourceURL=headerPositioning.js
+      </script>
+
+      
+        <footer class="sections" id="footer-sections" data-footer-sections="">
+  
+    <section data-test="page-section" data-section-theme="" class="page-section
+    
+      layout-engine-section
+    
+    background-width--full-bleed
+    
+      section-height--small
+    
+    
+      content-width--wide
+    
+    horizontal-alignment--center
+    vertical-alignment--middle
+    
+    " data-section-id="60188474f1c102112ba3169c" data-controller="SectionWrapperController, MagicPaddingController" data-current-styles="{
+&quot;imageOverlayOpacity&quot;: 0.15,
+&quot;backgroundWidth&quot;: &quot;background-width--full-bleed&quot;,
+&quot;sectionHeight&quot;: &quot;section-height--small&quot;,
+&quot;horizontalAlignment&quot;: &quot;horizontal-alignment--center&quot;,
+&quot;verticalAlignment&quot;: &quot;vertical-alignment--middle&quot;,
+&quot;contentWidth&quot;: &quot;content-width--wide&quot;,
+&quot;customContentWidth&quot;: 100,
+&quot;sectionAnimation&quot;: &quot;none&quot;,
+&quot;backgroundMode&quot;: &quot;image&quot;
+}" data-animation="none" data-controllers-bound="SectionWrapperController, MagicPaddingController">
+  <div class="section-background">
+  
+     
+  
+  </div>
+  <div class="content-wrapper" style="
+      
+        
+      
+    ">
+    <div class="content">
+      
+      
+      
+      
+      <div class="sqs-layout sqs-grid-12 columns-12" data-type="page-section" id="page-section-60188474f1c102112ba3169c"><div class="row sqs-row"><div class="col sqs-col-12 span-12"><div class="row sqs-row"><div class="col sqs-col-4 span-4"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-4edcb03b8214d104604d"><div class="sqs-block-content"><h3 style="white-space:pre-wrap;">Vance</h3><p class="sqsrte-small" style="white-space:pre-wrap;">Made with <a href="http://squarespace.com" target="_blank">Squarespace</a></p></div></div></div><div class="col sqs-col-8 span-8"><div class="row sqs-row"><div class="col sqs-col-3 span-3"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-10ecb840e5ed18758107"><div class="sqs-block-content"><p class="" style="white-space:pre-wrap;">123 Demo Street<br>Brooklyn, NY 12345</p></div></div></div><div class="col sqs-col-5 span-5"><div class="row sqs-row"><div class="col sqs-col-3 span-3"><div class="sqs-block html-block sqs-block-html" data-block-type="2" id="block-c70c391995a7d5eca0f6"><div class="sqs-block-content"><p class="" style="white-space:pre-wrap;">email@example.com<br>(555) 555-5555</p></div></div></div><div class="col sqs-col-2 span-2"><div class="sqs-block socialaccountlinks-v2-block sqs-block-socialaccountlinks-v2" data-block-type="54" id="block-50450b3616ddccbeb4b2"><div class="sqs-block-content">
+
+
+
+<div class="sqs-svg-icon--outer social-icon-alignment-right social-icons-color- social-icons-size-small social-icons-style-regular ">
+  <nav class="sqs-svg-icon--list">
+    <a href="https://www.facebook.com/squarespace" target="_blank" class="sqs-svg-icon--wrapper facebook-unauth" aria-label="">
+      <div>
+        <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+          <use class="sqs-use--icon" xlink:href="#facebook-unauth-icon"></use>
+          <use class="sqs-use--mask" xlink:href="#facebook-unauth-mask"></use>
+        </svg>
+      </div>
+    </a><a href="https://twitter.com/squarespace" target="_blank" class="sqs-svg-icon--wrapper twitter-unauth" aria-label="">
+      <div>
+        <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+          <use class="sqs-use--icon" xlink:href="#twitter-unauth-icon"></use>
+          <use class="sqs-use--mask" xlink:href="#twitter-unauth-mask"></use>
+        </svg>
+      </div>
+    </a>
+  </nav>
+</div>
+</div></div></div></div></div></div></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+  
+</footer>
+      
+    </div>
+
+    <script defer="defer" src="https://static1.squarespace.com/static/ta/5c5a514d65019f01a2cb2be5/1025/scripts/site-bundle.js" type="text/javascript"></script>
+    <script defer="defer" src="https://static1.squarespace.com/static/ta/5c5a514d65019f01a2cb2be5/1025/scripts/site-common.js" type="text/javascript"></script>
+    <script type="text/javascript" data-sqs-type="imageloader-bootstrapper">(function() {if(window.ImageLoader) { window.ImageLoader.bootstrap({}, document); }})();</script><svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none" data-usage="social-icons-svg"><symbol id="facebook-unauth-icon" viewBox="0 0 64 64"><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"></path></symbol><symbol id="facebook-unauth-mask" viewBox="0 0 64 64"><path d="M0,0v64h64V0H0z M39.6,22l-2.8,0c-2.2,0-2.6,1.1-2.6,2.6V28h5.3l-0.7,5.3h-4.6V47h-5.5V33.3H24V28h4.6V24 c0-4.6,2.8-7,6.9-7c2,0,3.6,0.1,4.1,0.2V22z"></path></symbol><symbol id="twitter-unauth-icon" viewBox="0 0 64 64"><path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"></path></symbol><symbol id="twitter-unauth-mask" viewBox="0 0 64 64"><path d="M0,0v64h64V0H0z M44.7,25.5c0,0.3,0,0.6,0,0.8C44.7,35,38.1,45,26.1,45c-3.7,0-7.2-1.1-10.1-2.9 c0.5,0.1,1,0.1,1.6,0.1c3.1,0,5.9-1,8.2-2.8c-2.9-0.1-5.3-2-6.1-4.6c0.4,0.1,0.8,0.1,1.2,0.1c0.6,0,1.2-0.1,1.7-0.2 c-3-0.6-5.3-3.3-5.3-6.4c0,0,0-0.1,0-0.1c0.9,0.5,1.9,0.8,3,0.8c-1.8-1.2-2.9-3.2-2.9-5.5c0-1.2,0.3-2.3,0.9-3.3 c3.2,4,8.1,6.6,13.5,6.9c-0.1-0.5-0.2-1-0.2-1.5c0-3.6,2.9-6.6,6.6-6.6c1.9,0,3.6,0.8,4.8,2.1c1.5-0.3,2.9-0.8,4.2-1.6 c-0.5,1.5-1.5,2.8-2.9,3.6c1.3-0.2,2.6-0.5,3.8-1C47.1,23.4,46,24.5,44.7,25.5z"></path></symbol></svg>
+
+  
+<div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div><div><div id="yui_3_17_2_1_1612275967456_382" class="yui3-widget sqs-widget sqs-popup-overlay"><div id="yui_3_17_2_1_1612275967456_384" class="sqs-popup-overlay-content"></div></div></div><div></div>
+    <!-- include bootstrap -->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+</body>
+
+</html>

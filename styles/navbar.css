@@ -1,0 +1,40 @@
+#brand-logo {
+    font-size: 34px;
+}
+
+.app-navbar {
+    background: linear-gradient(120deg, #00e4d0, #5983e8);
+    position: absolute;
+    top: 0px;
+    z-index: 10;
+}
+
+.nav-item {
+    display: none;
+}
+
+.vh100 {
+    height: 100vh;
+}
+
+.vh-85 {
+    height: 85vh;
+}
+
+.vh-90 {
+    height: 90vh;
+}
+
+body {
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background-image: -webkit-linear-gradient(left, rgb(57, 49, 175), rgb(0, 198, 255));
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}

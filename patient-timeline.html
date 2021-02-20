@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SnapSense</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBZmOar8dpf2vxG8ZLJo8djqpVXtCM1EQw",
+            authDomain: "sensurg-dc904.firebaseapp.com",
+            databaseURL: "https://sensurg-dc904-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "sensurg-dc904",
+            storageBucket: "sensurg-dc904.appspot.com",
+            messagingSenderId: "18887994126",
+            appId: "1:18887994126:web:fbf70f70c8613e3a6f455f",
+            measurementId: "G-YFWPFGVW1Z"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.database();
+        const storage = firebase.storage();
+
+        //db.settings({timestampsInSnapshots: true});
+    </script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/timeline.css">
+</head>
+
+<body>
+
+    <nav class="container-fluid navbar navbar-expand-lg navbar-dark bg-dark app-navbar">
+        <a class="navbar-brand" href="#">SnapSense</a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active ml-auto" id="home">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item active ml-auto" id="profile">
+                    <a class="nav-link" href="/profile.html">Profile</a>
+                </li>
+                <li class="nav-item active ml-auto" id="upload">
+                    <a class="nav-link" href="/upload.html">Upload</a>
+                </li>
+                <li class="nav-item active ml-auto" id="staff">
+                    <a class="nav-link" href="/staff.html">Staff</a>
+                </li>
+                <li class="nav-item active ml-auto" id="login">
+                    <a class="nav-link" href="/login.html">Log In</a>
+                </li>
+                <li class="nav-item active ml-auto" id="signup">
+                    <a class="nav-link" href="/signup.html">Sign Up</a>
+                </li>
+                <li class="nav-item active ml-auto" id="logout">
+                    <a class="nav-link" href="/login.html">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container emp-profile" style="margin-top: 100px">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5 id="main-name">Timeline</h5>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="dropdown" style="display: none">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                           No review status selected 
+                          </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown1">
+                            <a class="dropdown-item" data-value="Reviewed" href="#">Reviewed</a>
+                            <a class="dropdown-item" data-value="Flag for review" href="#">Needs review</a>
+                            <a class="dropdown-item" data-value="Flag for urgent review" href="#">Needs urgent review</a>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-2" style="display: none">
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="profile-name">William Smith</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Podiatrist</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="profile-podiatrist">Dr. Heylen</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Doctor</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="profile-doctor">Dr. Smith</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="profile-email">lorem@ipsum.com</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="profile-phone"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="container">
+                                <!-- mt-5 mb-5 -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="timeline" id="timeline-list">
+                                            <li>
+                                                <p> Wednesday Jan 20 2021 15:39</p>
+                                                <div class="card mb-3" style="max-width: 100%;">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-md-4">
+                                                            <img src="https://firebasestorage.googleapis.com/v0/b/sensurg-dc904.appspot.com/o/Add0vLDSinaCKpJmslbcnNs5b4i1%2F16111571485530?alt=media&amp;token=5a3e5385-e929-47a6-800b-cee3be6d693d" class="card-img" alt="...">
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">William Smith</h5>
+                                                                <p class="card-text">
+                                                                    <ul>
+                                                                        <li>Has experienced fever.</li>
+                                                                        <li>Size has changed.</li>
+                                                                        <li>Smell has changed.</li>
+                                                                    </ul>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 d-flex align-items-end justify-content-between" style="flex-direction: column">
+                                                            <div class="dropdown" id="dropdown" style="margin-top: 10px; margin-right: 10px">
+                                                                <button id="btn1" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    No action selected
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" clr="btn-success" href="#">Discharge</a>
+                                                                    <a class="dropdown-item" clr="btn-warning" href="#">Update next week</a>
+                                                                    <a class="dropdown-item" clr="btn-danger" href="#">Require in person visit</a>
+                                                                </div>
+                                                            </div>
+                                                            <button style="margin-right: 20px; margin-bottom: 20px" type="button" class="btn btn-outline-secondary">View full history</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p> Friday Jan 15 2021 10:39</p>
+                                                <div class="card mb-3" style="max-width: 100%;">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-md-4">
+                                                            <img src="https://www.woundsource.com/sites/default/files/patient-condition/foot_ulcer_5.jpg" class="card-img" alt="...">
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Matthew Sood</h5>
+                                                                <p class="card-text">
+                                                                    <ul>
+                                                                        <li>Wound has swollen.</li>
+                                                                    </ul>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 d-flex align-items-end justify-content-between" style="flex-direction: column">
+                                                            <div class="dropdown" id="dropdown" style="margin-top: 10px; margin-right: 10px">
+                                                                <button id="btn1" class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    Update next week
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" clr="btn-success" href="#">Discharge</a>
+                                                                    <a class="dropdown-item" clr="btn-warning" href="#">Update next week</a>
+                                                                    <a class="dropdown-item" clr="btn-danger" href="#">Require in person visit</a>
+                                                                </div>
+                                                            </div>
+                                                            <button style="margin-right: 20px; margin-bottom: 20px" type="button" class="btn btn-outline-secondary">View full history</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p> Friday Jan 15 2021 07:05</p>
+                                                <div class="card mb-3" style="max-width: 100%;">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-md-4">
+                                                            <img src="https://www.azuravascularcare.com/assets/IMG_7315-cropped-adjusted_edited-1.jpg" class="card-img" alt="...">
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Nikita Sarker</h5>
+                                                                <p class="card-text">
+                                                                    <ul>
+                                                                        <li>Has experienced local pain.</li>
+                                                                        <li>Has experienced a fever.</li>
+                                                                    </ul>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 d-flex align-items-end justify-content-between" style="flex-direction: column">
+                                                            <div class="dropdown" id="dropdown" style="margin-top: 10px; margin-right: 10px">
+                                                                <button id="btn1" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    Required in person visit
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item" clr="btn-success" href="#">Discharge</a>
+                                                                    <a class="dropdown-item" clr="btn-warning" href="#">Update next week</a>
+                                                                    <a class="dropdown-item" clr="btn-danger" href="#">Require in person visit</a>
+                                                                </div>
+                                                            </div>
+                                                            <button style="margin-right: 20px; margin-bottom: 20px" type="button" class="btn btn-outline-secondary">View full history</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- include bootstrap -->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="scripts/navbar.js"></script>
+    <script src="scripts/dropdown.js"></script>
+</body>
+
+</html>
